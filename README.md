@@ -1,4 +1,4 @@
-# commit'd
+# knit
 Smart peer-based app for goals and objectives
 
 This project is also deployed remotely at https://commit-d.web.app/. 
