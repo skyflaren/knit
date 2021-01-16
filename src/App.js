@@ -17,6 +17,7 @@ function App() {
         >
           Learn React
         </a>
+        <p id="load">Firebase SDK Loading&hellip;</p>
       </header>
     </div>
   );

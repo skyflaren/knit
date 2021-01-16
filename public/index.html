@@ -25,10 +25,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <style media="screen">
+      #load { color: rgba(255,255,255,0.6); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        #message { margin-top: 0; background: white; box-shadow: none; }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +48,82 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+
+    <!-- update the version number as needed -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+    <!-- include only the Firebase features as you need -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-functions.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-messaging.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-remote-config.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-performance.js"></script>
+
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <!-- <script defer src="https://www.gstatic.com/firebase/init.js"></script> -->
+
+    <!-- <script defer src="https://www.gstatic.com/firebase/init.js?useEmulator=true"></script> -->
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCMerrYfrGCC05NfEcJoH-WwePGPtfkKlc",
+        authDomain: "commit-d.firebaseapp.com",
+        databaseURL: "https://commit-d-default-rtdb.firebaseio.com",
+        projectId: "commit-d",
+        storageBucket: "commit-d.appspot.com",
+        messagingSenderId: "815768705048",
+        appId: "1:815768705048:web:5827d67aaf2350e5490b6d"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
   </body>
 </html>
