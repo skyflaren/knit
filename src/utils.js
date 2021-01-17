@@ -17,9 +17,10 @@ function requestParams(href) {
 	}
 }
 
-function generateSessionName() {
+function genConcatNumbers() {
+	// CSPRNG
 	return window.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(9))).join("");
 }
 
-export const generateSessionName = generateSessionName;
-export const requestParams = requestParams;
+export const generateSessionName = genConcatNumbers;
+export const getRequestParams = requestParams;
