@@ -1,0 +1,19 @@
+.form-container{
+    position: absolute;
+    top:40vh; 
+    left:25vw;
+    /* margin-top: -50px;
+    margin-left: -50px; */
+}
+
+input[type=text]{
+    width: 50rem;
+    border:none; 
+    border-bottom: 2px solid black; 
+    font-size:1.8rem; 
+    
+}
+
+h1{
+    font-size: 5rem;
+}
