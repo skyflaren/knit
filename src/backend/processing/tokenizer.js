@@ -71,11 +71,19 @@ async function userRoomCode(userID){
 
 setTimeout(() => {
     newUser("Religion and world issues", 1);
-    joinQueue(1);
+    
+    
+    
+}, 2000);
+setTimeout(() => {
+   joinQueue(1);
+}, 2000);
+setTimeout(() => {
     newUser("My religion", 2);
+}, 2000);
+setTimeout(() => {
     joinQueue(2);
 }, 2000);
-
 setTimeout(() => {
     console.log("code pog " + userRoomCode(1));
 }, 10000);

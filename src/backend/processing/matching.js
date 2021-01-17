@@ -34,12 +34,18 @@ async function joinQueue(userID){
                                 console.log("Match Made! Room Code: " + roomid);
 
                                 try{
-                                    let obj = {}, obj2 = {};
+                                    let obj = {}; let obj2 = {};
                                     obj[userID] = user;
                                     obj2[userID2] = user2;
 
-                                    store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
-                                    store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj2);
+                                    setTimeout(() => {
+                                        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
+                                    }, 1000);
+                                    setTimeout(() => {
+                                        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj2);
+                                    }, 1000);
+
+                                    console.log("test");
                                 } catch (e) { console.log("Depositing data failed" + e); }
                             });
                     } catch (e) { console.log("Failed User2 + Generate Room ID " + user + " || " + e); }
