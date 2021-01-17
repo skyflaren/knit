@@ -1,6 +1,5 @@
 import {store} from "../../firebase.js";
-import {db} from "../../firebase.js"
-import {generateSessionName} from "../helpers/utils.js"
+import joinQueue from "./matching.js";
 
 async function resp(promptResponse) {
     const q = encodeURIComponent(promptResponse);
