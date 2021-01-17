@@ -3,6 +3,8 @@ import {getUserRoomCode as getRoomCode} from "../../backend/helpers/roomCode.js"
 import {getSID} from "../../backend/helpers/utils.js";
 
 import "./Lobby.css";
+import Col from "react-bootstrap/Col";
+import logo from "../../knit-logo.svg";
 
 class Lobby extends React.Component {
   // constructor(props) {
@@ -34,10 +36,13 @@ class Lobby extends React.Component {
   render() {
     return (
       <>
-        <p>more words, finding a match</p>
+        <Col className="sidebar" md="auto">
+          <img src={logo} />
+        </Col>
         <div className="search">
             <span><i data-feather="search"></i></span>
         </div>
+        <p>more words, finding a match...</p>
       </>
     );
   }

@@ -44,6 +44,7 @@ async function joinQueue(userID){
                                     upd(obj);
                                     upd(obj2);
                                 } catch (e) { console.log("Depositing data failed" + e); }
+                                delete q[token];
                             });
                     } catch (e) { console.log("Failed User2 + Generate Room ID " + user + " || " + e); }
                 }

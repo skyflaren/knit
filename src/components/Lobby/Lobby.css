@@ -21,7 +21,27 @@
 }
 
 .search {
-	/*temporary*/
 	width: 20rem;
 	height: 20rem;
+	margin: 15vh auto -10vh;
+}
+
+p{
+	text-align: center;
+	font-size: 3vw !important;
+}
+
+img{
+  width: 10rem; 
+  height: 10rem; 
+}
+
+.sidebar{
+  background-color: #ebe5d8;
+  position: absolute;
+  padding-top: 40vh;
+    /* top:50%;  */
+  height:100%;
+  width:auto; 
+  top: 0px;
 }
