@@ -14,4 +14,16 @@ if (!firebase.apps.length) {
     firebase.initializeApp(config);
 }
 
+// app
+export const app = firebase.app();
+
+// realtime database
+export const db = firebase.database();
+
+// firestore
+// export const store = firebase.firestore();
+
+// authentication
+// export const auth = firebase.auth();
+
 export default firebase;
