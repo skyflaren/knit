@@ -1,13 +1,18 @@
+.Form:hover h1{
+    opacity:0.75; 
+    color: #2e3652;
+}
+
 .form-container{
     position: absolute;
-    top:40vh; 
+    top:35vh; 
     left:25vw;
     /* margin-top: -50px;
     margin-left: -50px; */
 }
 
 input[type=text]{
-    width: 50rem;
+    width: 45rem;
     border:none; 
     border-bottom: 2px solid black; 
     font-size:1.8rem; 
@@ -15,5 +20,13 @@ input[type=text]{
 }
 
 h1{
+    color: #dfdbac;
     font-size: 5rem;
+    opacity:1; /* Completely invisible. */
+    transition:1s; /* A 1 second transition. */
+}
+
+button{
+    margin:10px; 
+    margin-left: 15px; 
 }

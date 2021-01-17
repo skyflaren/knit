@@ -30,8 +30,8 @@ ReactDOM.render(
         <img src={logo} />
       </Col>
       <Col className="form-container">
-          <Form />
-          <p>Instructions</p>
+        <p>Welcome to Knit</p>
+        <Form />
       </Col>
     </Row>
   </React.StrictMode>,
