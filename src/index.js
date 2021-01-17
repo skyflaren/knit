@@ -7,12 +7,17 @@ import {
 
 import "./index.css";
 
+// lobby
+import Lobby from "./components/Lobby";
 import Landing from "./components/Landing";
+import MatchFound from "./components/MatchFound";
 
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
+            <Route path="/lobby" component={Lobby} />
+            <Route path="/matched" component={MatchFound} />
             <Route exact path="/" component={Landing} />
         </Router>
     </React.StrictMode>,
