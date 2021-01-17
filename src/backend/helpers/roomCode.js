@@ -7,7 +7,8 @@ function userRoomCode(userID) {
             querySnapshot.forEach((doc) => {
                 let user = doc.data()[userID];
                 code = (user !== undefined && user.room !== "" ? user.room : undefined);
-                // console.log("Room code: " + user.room);
+                console.log("Room code: " + user.room);
+                console.log(user);
             });
             return;
         });
