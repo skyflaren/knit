@@ -1,7 +1,7 @@
 import React from "react";
 // import roomCode as getRoomCode from "../../backend/utils/usercode.js";
 import "./MatchFound.css";
-import { getRequestParam as getParam } from "../../utils.js";
+import { getRequestParam as getParam } from "../../backend/helpers/utils.js";
 
 class MatchFound extends React.Component {
   // constructor(props) {
@@ -24,7 +24,7 @@ class MatchFound extends React.Component {
   }
 
   joinCall() {
-    location.pathname = `/video/`;
+    location.pathname = "/video/";
   }
 
   render() {

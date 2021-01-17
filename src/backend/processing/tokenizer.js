@@ -1,5 +1,5 @@
 // import {db} from "../../firebase.js"
-// import {generateSessionName} from "./src/utils.js"
+import {generateSessionName} from "../helpers/utils.js"
 
 async function resp(promptResponse) {
     const q = encodeURIComponent(promptResponse);
