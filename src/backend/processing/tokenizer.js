@@ -15,7 +15,7 @@ async function tokenize(promptResponse, res){
     
     for(let toCheck in CHECK){
         for(let subject in res.entities[CHECK[toCheck]]){
-            ret.push(res.entities[CHECK[toCheck]][subject].body);
+            ret.push(res.entities[CHECK[toCheck]][subject].body.toLowerCase());
         }
     }
 
@@ -34,19 +34,22 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
     let sentenceTokenWeights = [];
     for(let i = 0; i < sentenceTokens.length; i++) sentenceTokenWeights.push(1);
     
-    store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update({
-        SIDvalue: {
-            "rawResponse": promptResponse,
-            "state": 1,
-            "room": "",
-            "tokens": sentenceTokens,
-            "tokenWeight": sentenceTokenWeights
-        }
-    })
+    try {
+        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update({
+            SIDvalue: {
+                "rawResponse": promptResponse,
+                "state": 1,
+                "room": "",
+                "tokens": sentenceTokens,
+                "tokenWeight": sentenceTokenWeights
+            }
+        });
+    } catch (e) { console.log("sadge" + SIDvalue); }
     
-    console.log(user);
+    
+    // console.log(user);
 
-    return user;
+    // return user;
 }
 
 async function newUser(promptResponse, SIDvalue){
