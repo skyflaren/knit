@@ -1,0 +1,24 @@
+.sidebar{
+  background-color: #ebe5d8;
+  position: absolute;
+  padding-top: 40vh;
+    /* top:50%;  */
+  height:100%;
+  width:auto; 
+}
+
+.App{
+  padding-top:100%;
+}
+
+img{
+  width: 10rem; 
+  height: 10rem; 
+}
+
+p{
+  opacity: 50%;
+  color: #5c4d41;
+  font-size:1.6rem; 
+}
+
