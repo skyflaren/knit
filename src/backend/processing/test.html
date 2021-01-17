@@ -39,7 +39,11 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      const db = firebase.database();
+      var db;
+      setTimeout(() => {
+        db = firebase.app().database();
+      },1000);
+      // const db = firebase.app().database();
     </script>
 
     <script src="tokenizer.js"></script>

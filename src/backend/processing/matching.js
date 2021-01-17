@@ -1,4 +1,4 @@
-import {db} from "../../firebase.js"
+import {db} from "../../firebase.js";
 let q = {};
 
 async function joinQueue(user){

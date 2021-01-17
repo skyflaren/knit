@@ -1,5 +1,5 @@
-import {db} from "../../firebase.js"
-import {generateSessionName} from "./src/utils.js"
+// import {db} from "../../firebase.js"
+// import {generateSessionName} from "./src/utils.js"
 
 async function resp(promptResponse) {
     const q = encodeURIComponent(promptResponse);
@@ -53,9 +53,11 @@ async function newUser(promptResponse, SIDvalue){
     resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
 }
 
-newUser("Religion and world issues", 1);
-joinQueue(1);
-newUser("My religion", 2);
-joinQueue(2);
+setTimeout(() => {
+    newUser("Religion and world issues", 1);
+    joinQueue(1);
+    newUser("My religion", 2);
+    joinQueue(2);
+}, 2000);
 
 export default newUser;
