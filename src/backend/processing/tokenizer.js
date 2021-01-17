@@ -35,6 +35,7 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
     for(let i = 0; i < sentenceTokens.length; i++) sentenceTokenWeights.push(1);
     
     try {
+        // console.log("tok", SIDvalue);
         let obj = {};
         obj[SIDvalue] = {
             "rawResponse": promptResponse,
@@ -45,13 +46,13 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "tokenWeight": sentenceTokenWeights
         };
         store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(obj);
-        return SIDvalue;
-        console.log(obj);
+        // console.log(obj);
+        // return SIDvalue;
     } catch (e) { console.log("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
 }
 
 async function newUser(promptResponse, SIDvalue){
-    resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs)).then(sid => joinQueue(sid));
+    resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs)).then(sid => joinQueue(SIDvalue));
 }
 
 

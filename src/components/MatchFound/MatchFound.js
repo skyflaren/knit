@@ -21,6 +21,8 @@ class MatchFound extends React.Component {
 
     // Document title
     document.title = "Match Found!";
+
+    document.getElementById("content").classList.add("match");
   }
 
   joinCall() {
@@ -30,11 +32,12 @@ class MatchFound extends React.Component {
   render() {
     return (
       <>
-        <h1>matched!</h1>
-        <p>you have been matched with someone special.</p>
-        <label htmlFor="name">what is your name?</label>
-        <form method="get" action="/video">
-          <input id="name" name="name"  />
+        <h1 className="matched">matched!</h1>
+        <p className="matched">you have been matched with someone special.</p>
+        <form method="get" action="/video" className="matched">
+          <label htmlFor="name">what is your name?</label>
+          <br />
+          <input id="name" name="name" />
           <input id="room" name="room" value={getParam("room")} type="hidden" />
           <button type="submit" onClick={this.joinCall}><i data-feather="arrow-right"></i></button>
         </form>

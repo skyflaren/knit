@@ -2,7 +2,7 @@ import React from "react";
 import arrow from "./arrow.svg";
 import "./Form.css";
 
-import { genSID } from "../../backend/helpers/utils.js";
+import { genSID, setSID} from "../../backend/helpers/utils.js";
 // import parseData from "../../backend/processing/tokenizer.js";
 
 class Form extends React.Component {
@@ -17,7 +17,7 @@ class Form extends React.Component {
     // get and submit data
     let userResponse = document.getElementById("interests").value;
     let userid = document.getElementById("userid").value;
-
+    setSID(userid);
     // parseData(userResponse, userid);
 
     const url = "https://knit-post-382947.herokuapp.com/";

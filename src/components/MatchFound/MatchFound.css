@@ -1,1 +1,16 @@
 /* css for match found page */
+#content > .matched {
+	text-align: center;
+}
+
+#content .matched label {
+	font-size: 1.5rem;
+}
+
+#content.match {
+	height:90vh;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+}

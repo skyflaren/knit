@@ -29,12 +29,12 @@ function getParam(key, msg="") {
 
 function genConcatNumbers() {
 	// CSPRNG
-	return window.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(9))).join("");
+	return Math.floor(Math.random()*1000)+"";// window.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(4))).join("");
 }
 
 // Get user's session id
 function getUserSID() {
-	return document.cookie.split("; ").find(key => key === "sid");
+	return document.cookie.split("; ").filter(key => key.split("=")[0] === "sid")[0].split("=")[1];
 }
 
 // Set user's session id
@@ -45,7 +45,6 @@ function setUserSID(sid) {
 // Generate user's session id 
 function genUserSID() {
 	const sid = genConcatNumbers();
-	setUserSID(sid);
 	return sid;
 }
 

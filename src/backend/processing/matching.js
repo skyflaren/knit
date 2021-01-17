@@ -11,10 +11,10 @@ async function joinQueue(userID){
     let user;
 
     try {
-        store.collection("sessions").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
+        store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").get().then((doc) => {
+            // querySnapshot.forEach((doc) => {
                 user = doc.data()[userID];
-            });
+            // });
             return user;
         }).then(user => {
             let mx = -1, ind = -1;
@@ -35,15 +35,17 @@ async function joinQueue(userID){
             }
             if(mx != -1){
                 console.log(ind);
-                let userID2 = q[user.tokens[ind]]; let user2 = [];
+                let userID2 = q[user.tokens[ind]]; let user2 = {};
                 try {
-                    store.collection("sessions").get().then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
+                    store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").get().then((doc) => {
+                    // store.collection("sessions").get().then((querySnapshot) => {
+                            // querySnapshot.forEach((doc) => {
                                 user2 = doc.data()[userID2];
-                            });
+                            // });
+                            // console.log(user2);
                             return user2;
                         }).then(user2 => {
-                            let roomid = genConcatNumbers();
+                            let roomid = generateSessionName();
                             // console.log("step five " + roomid);
                             // console.log(userID2);
                             user.room = roomid;

@@ -16,10 +16,15 @@ class Lobby extends React.Component {
 
   componentDidMount() {
     try {
-      const code = getRoomCode(getSID());
-      if (code !== undefined) {
-        location.pathname = `/matched/?room=${code}`;
-      }
+      getRoomCode(getSID()).then(code => {
+      // console.log("sid",getSID());
+      // console.log(code);
+        if (code !== undefined) {
+          location.href = `${location.origin}/matched/?room=${code}`;
+        }
+
+      });
+      // const code = ;
     } catch (e) {
       // nothing
     }
@@ -42,7 +47,7 @@ class Lobby extends React.Component {
         <div className="search">
             <span><i data-feather="search"></i></span>
         </div>
-        <p>more words, finding a match...</p>
+        <p>hold on, finding a match...</p>
       </>
     );
   }
