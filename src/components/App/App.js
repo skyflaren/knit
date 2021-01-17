@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import firebase from "../../firebase.js"; 
+import {app as firebaseApp} from "../../firebase.js"; 
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +28,7 @@ class App extends React.Component {
     // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
     try {
-      let app = firebase.app();
+      let app = firebaseApp;
       // let app = firebase.app;
 
       let features = [
