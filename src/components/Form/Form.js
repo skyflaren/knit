@@ -23,7 +23,7 @@ class Form extends React.Component {
       <div className="Form">
         <input type="text" id="interests" placeholder="What do you want to talk about today? (Enter Here)"/>
         <input type="image" src={arrow} name="next" id="next" onClick={this.submitData}/>
-        <h1>What is on your mind?</h1>
+        <h1>What&apos;s on your mind?</h1>
       </div>
     );
   }

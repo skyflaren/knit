@@ -19,7 +19,6 @@ class Landing extends React.Component {
           <img src={logo} />
         </Col>
         <Col className="form-container">
-          <p>Welcome to Knit</p>
           <Form />
         </Col>
       </Row>

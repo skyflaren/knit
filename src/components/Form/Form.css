@@ -1,29 +1,30 @@
-.Form:hover h1{
-    opacity:0.75; 
-    color: #2e3652;
-}
-
 .form-container{
     position: absolute;
-    top:35vh; 
-    left:25vw;
+    top:40vh; 
+    left:20vw;
     /* margin-top: -50px;
     margin-left: -50px; */
+    /*color: #45517d;*/
 }
 
 input[type=text]{
     width: 45rem;
     border:none; 
-    border-bottom: 2px solid black; 
-    font-size:1.8rem; 
+    border-bottom: 3px solid #d4d2cb; 
+    font-size:1.6rem; 
     
 }
 
 h1{
-    color: #dfdbac;
+    color: #5c4d41;
     font-size: 5rem;
-    opacity:1; /* Completely invisible. */
-    transition:1s; /* A 1 second transition. */
+}
+
+#next{
+    width: 3%;
+    height: 3%;
+    margin-bottom: 0px;
+    margin-top: auto;
 }
 
 button{
