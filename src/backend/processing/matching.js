@@ -1,6 +1,10 @@
 // import {db} from "../../firebase.js";
 let q = {};
 
+async function upd(object){
+    store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(object);
+}
+
 async function joinQueue(userID){
     let user;
 
@@ -8,10 +12,10 @@ async function joinQueue(userID){
         store.collection("sessions").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 user = doc.data()[userID];
+                console.log("doc da " + doc.data());
             });
             return user;
         }).then(user => {
-
             for(let token in user.tokens){  //When adding user
                 if(q.hasOwnProperty(token)){    //Match Found
                     let userID2 = q[token];
@@ -38,11 +42,16 @@ async function joinQueue(userID){
                                     obj[userID] = user;
                                     obj2[userID2] = user2;
 
+                                    upd(obj);
+                                    upd(obj2);
+
                                     setTimeout(() => {
-                                        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
+                                        // store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
+                                        upd(obj);
                                     }, 1000);
                                     setTimeout(() => {
-                                        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj2);
+                                        // store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj2);
+                                        upd(obj2);
                                     }, 1000);
 
                                     console.log("test");

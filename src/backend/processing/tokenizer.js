@@ -43,7 +43,8 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "tokens": sentenceTokens,
             "tokenWeight": sentenceTokenWeights
         };
-        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
+        store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(obj);
+        // store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(SIDvalue + 2, SIDvalue+2);
     } catch (e) { console.log("sadge" + SIDvalue + " || " + e); }
 }
 
@@ -69,21 +70,26 @@ async function userRoomCode(userID){
     return undefined
 }
 
+// newUser("Religion and world issues", 1);
+// newUser("My religion", 2);
+// joinQueue(1);
+// joinQueue(2);
+
 setTimeout(() => {
     newUser("Religion and world issues", 1);
-    
-    
-    
-}, 2000);
-setTimeout(() => {
-   joinQueue(1);
-}, 2000);
+}, 1000);
 setTimeout(() => {
     newUser("My religion", 2);
-}, 2000);
+}, 1000);
+
+setTimeout(() => {
+   joinQueue(1);
+}, 3000);
 setTimeout(() => {
     joinQueue(2);
-}, 2000);
+}, 3000);
+
+
 setTimeout(() => {
     console.log("code pog " + userRoomCode(1));
 }, 10000);
