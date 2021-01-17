@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 // index.html
 import "./index.css";
 import "./components/Form/Form.css";
-import App from "./components/App";
+// import App from "./components/App";
 import Form from "./components/Form";
 // import Navbar from "./components/Navbar";
 // import reportWebVitals from "./reportWebVitals";
@@ -16,12 +16,12 @@ import Row from "react-bootstrap/Row";
 
 import logo from "./components/Form/knit-logo.svg";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>,
+//   document.getElementById("root")
+// );
 
 ReactDOM.render(
   <React.StrictMode>
