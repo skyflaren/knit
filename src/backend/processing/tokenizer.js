@@ -25,7 +25,7 @@ async function tokenize(promptResponse, res){
         console.log(ret);
     } catch (e) {}
 
-    //lemmatize?
+    //lemmatizing later
 
     return ret;
 }
@@ -44,26 +44,40 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "tokenWeight": sentenceTokenWeights
         };
         store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
-    } catch (e) { console.log("sadge" + SIDvalue); }
-    
-    
-    // console.log(user);
-
-    // return user;
+    } catch (e) { console.log("sadge" + SIDvalue + " || " + e); }
 }
 
 async function newUser(promptResponse, SIDvalue){
     resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
 }
 
-console.log("test here");
+async function userRoomCode(userID){
+    try {
+        let ret;
+        store.collection("sessions").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                user = doc.data()[userID];
+                ret = (user.room != "" ? user.room : undefined);
+                console.log(user);
+                console.log("room code pog:: " + user.room);
+            });
+            return;
+        });
+        return ret;
+    }
+    catch (e) { console.log("Couldn't give userRoomCode " + e); }
+    return undefined
+}
 
 setTimeout(() => {
-    console.log("test 2");
     newUser("Religion and world issues", 1);
     joinQueue(1);
     newUser("My religion", 2);
     joinQueue(2);
 }, 2000);
+
+setTimeout(() => {
+    console.log("code pog " + userRoomCode(1));
+}, 10000);
 
 // export default newUser;

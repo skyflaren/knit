@@ -21,5 +21,5 @@ function generateSessionName() {
 	return window.crypto.getRandomValues(new Uint8Array(new ArrayBuffer(9))).join("");
 }
 
-export const generateSessionName = generateSessionName;
-export const requestParams = requestParams;
+// export const generateSessionName = generateSessionName;
+// export const requestParams = requestParams;
