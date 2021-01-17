@@ -5,9 +5,46 @@
 <body>
     <p id="initial">testing phrase</p>
     <p id="display">algorithmn output</p>
-    <script src="tokenizer.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+    <!-- include only the Firebase features as you need -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-functions.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-messaging.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-storage.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-remote-config.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-performance.js"></script>
+
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <!-- <script defer src="https://www.gstatic.com/firebase/init.js"></script> -->
+
+    <!-- <script defer src="https://www.gstatic.com/firebase/init.js?useEmulator=true"></script> -->
     <script>
-		newUser("The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson", "359");
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCMerrYfrGCC05NfEcJoH-WwePGPtfkKlc",
+        authDomain: "commit-d.firebaseapp.com",
+        databaseURL: "https://commit-d-default-rtdb.firebaseio.com",
+        projectId: "commit-d",
+        storageBucket: "commit-d.appspot.com",
+        messagingSenderId: "815768705048",
+        appId: "1:815768705048:web:5827d67aaf2350e5490b6d"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
     </script>
+
+    <script src="tokenizer.js"></script>
+    <!-- <script>
+		newUser("The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson", "359");
+    </script> -->
 </body>
 </html>
