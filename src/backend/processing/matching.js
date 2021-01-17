@@ -12,7 +12,6 @@ async function joinQueue(userID){
         store.collection("sessions").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 user = doc.data()[userID];
-                console.log("doc da " + doc.data());
             });
             return user;
         }).then(user => {
@@ -44,17 +43,6 @@ async function joinQueue(userID){
 
                                     upd(obj);
                                     upd(obj2);
-
-                                    setTimeout(() => {
-                                        // store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
-                                        upd(obj);
-                                    }, 1000);
-                                    setTimeout(() => {
-                                        // store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj2);
-                                        upd(obj2);
-                                    }, 1000);
-
-                                    console.log("test");
                                 } catch (e) { console.log("Depositing data failed" + e); }
                             });
                     } catch (e) { console.log("Failed User2 + Generate Room ID " + user + " || " + e); }

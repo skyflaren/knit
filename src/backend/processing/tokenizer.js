@@ -25,7 +25,7 @@ async function tokenize(promptResponse, res){
         console.log(ret);
     } catch (e) {}
 
-    //lemmatizing later
+    //lemmatizing one day
 
     return ret;
 }
@@ -44,8 +44,7 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "tokenWeight": sentenceTokenWeights
         };
         store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(obj);
-        // store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(SIDvalue + 2, SIDvalue+2);
-    } catch (e) { console.log("sadge" + SIDvalue + " || " + e); }
+    } catch (e) { console.log("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
 }
 
 async function newUser(promptResponse, SIDvalue){
