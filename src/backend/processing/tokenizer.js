@@ -35,15 +35,15 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
     for(let i = 0; i < sentenceTokens.length; i++) sentenceTokenWeights.push(1);
     
     try {
-        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update({
-            SIDvalue: {
-                "rawResponse": promptResponse,
-                "state": 1,
-                "room": "",
-                "tokens": sentenceTokens,
-                "tokenWeight": sentenceTokenWeights
-            }
-        });
+        let obj = {};
+        obj[SIDvalue] = {
+            "rawResponse": promptResponse,
+            "state": 1,
+            "room": "",
+            "tokens": sentenceTokens,
+            "tokenWeight": sentenceTokenWeights
+        };
+        store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update(obj);
     } catch (e) { console.log("sadge" + SIDvalue); }
     
     
