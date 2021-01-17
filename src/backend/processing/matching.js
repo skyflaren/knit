@@ -1,4 +1,6 @@
-// import {db} from "../../firebase.js";
+import {store} from "../../firebase.js";
+import {generateSessionName} from "../helpers/utils.js";
+
 let q = {};
 
 async function upd(object){
@@ -16,7 +18,7 @@ async function joinQueue(userID){
             return user;
         }).then(user => {
             for(let token in user.tokens){  //When adding user
-                if(q.hasOwnProperty(token)){    //Match Found
+                if(Object.prototype.hasOwnProperty.call(q, token)) {    //Match Found
                     let userID2 = q[token];
                     try {
                         store.collection("sessions").get().then((querySnapshot) => {
@@ -32,9 +34,9 @@ async function joinQueue(userID){
                                 user.state = 3;
                                 user2.state = 3;
 
-                                console.log(user);
-                                console.log(user2);
-                                console.log("Match Made! Room Code: " + roomid);
+                                // console.log(user);
+                                // console.log(user2);
+                                // console.log("Match Made! Room Code: " + roomid);
 
                                 try{
                                     let obj = {}; let obj2 = {};
@@ -46,17 +48,18 @@ async function joinQueue(userID){
                                 } catch (e) { console.log("Depositing data failed" + e); }
                                 delete q[token];
                             });
-                    } catch (e) { console.log("Failed User2 + Generate Room ID " + user + " || " + e); }
+                    } catch (e) { console.error("Failed User2 + Generate Room ID " + user + " || " + e); }
                 }
                 else{   //No Match
                     q[token] = userID;
                     user.state = 2;
-                    console.log("No Match for user: " + userID +  ", keyword: " + user.tokens[token]);
+                    // console.log("No Match for user: " + userID +  ", keyword: " + user.tokens[token]);
                 }
             }
         });
     }
-    catch (e) { console.log("Couldn't load User1 " + user + " || " + e); }
+    catch (e) { console.error("Couldn't load User1 " + user + " || " + e); }
 }
 
-// export const joinQueue = joinQueue;
+export const userJoinQueue = joinQueue;
+export default joinQueue;

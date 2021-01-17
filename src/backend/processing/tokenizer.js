@@ -1,10 +1,9 @@
-// import {db} from "../../firebase.js"
-import {generateSessionName} from "../helpers/utils.js"
+import {store} from "../../firebase.js";
 
 async function resp(promptResponse) {
     const q = encodeURIComponent(promptResponse);
-    const uri = 'https://api.wit.ai/message?v=20200513&q=' + q;
-    const auth = 'Bearer ' + 'BVDTBT7XM6C2RX4OP5NTJSG6TBIC7QCM';
+    const uri = "https://api.wit.ai/message?v=20200513&q=" + q;
+    const auth = "Bearer " + "BVDTBT7XM6C2RX4OP5NTJSG6TBIC7QCM";
 
     return fetch(uri, {headers: {Authorization: auth}}).then(res => res.json());
 }
@@ -19,11 +18,11 @@ async function tokenize(promptResponse, res){
         }
     }
 
-    try {
-        document.getElementById("initial").innerHTML = promptResponse;
-        document.getElementById("display").innerHTML = ret;
-        console.log(ret);
-    } catch (e) {}
+    // try {
+    //     document.getElementById("initial").innerHTML = promptResponse;
+    //     document.getElementById("display").innerHTML = ret;
+    //     console.log(ret);
+    // } catch (e) {}
 
     //lemmatizing one day
 
@@ -44,11 +43,12 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "tokenWeight": sentenceTokenWeights
         };
         store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(obj);
-    } catch (e) { console.log("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
+        return SIDvalue;
+    } catch (e) { console.error("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
 }
 
 async function newUser(promptResponse, SIDvalue){
-    resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
+    resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs)).then(sid => joinQueue(sid));
 }
 
-// export default newUser;
+export default newUser;
