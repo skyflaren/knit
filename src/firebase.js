@@ -21,7 +21,7 @@ export const app = firebase.app();
 export const db = firebase.app().database();
 
 // firestore
-// export const store = firebase.app().firestore();
+export const store = firebase.firestore();
 
 // authentication
 // export const auth = firebase.app().auth();
