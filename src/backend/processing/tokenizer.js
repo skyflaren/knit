@@ -53,11 +53,14 @@ async function newUser(promptResponse, SIDvalue){
     resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
 }
 
+console.log("test here");
+
 setTimeout(() => {
+    console.log("test 2");
     newUser("Religion and world issues", 1);
     joinQueue(1);
     newUser("My religion", 2);
     joinQueue(2);
 }, 2000);
 
-export default newUser;
+// export default newUser;

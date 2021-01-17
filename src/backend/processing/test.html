@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
 
     <!-- include only the Firebase features as you need -->
-    <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+    <!-- <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script> -->
     <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.2.3/firebase-functions.js"></script>
@@ -38,7 +38,9 @@
         appId: "1:815768705048:web:5827d67aaf2350e5490b6d"
       };
       // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
+      setTimeout(() => {
+      	firebase.initializeApp(firebaseConfig);
+      },1000);
       var db;
       setTimeout(() => {
         db = firebase.app().database();
