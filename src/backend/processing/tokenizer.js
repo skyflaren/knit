@@ -1,4 +1,6 @@
 import {store} from "../../firebase.js";
+import {db} from "../../firebase.js"
+import {generateSessionName} from "../helpers/utils.js"
 
 async function resp(promptResponse) {
     const q = encodeURIComponent(promptResponse);
@@ -39,16 +41,19 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
             "rawResponse": promptResponse,
             "state": 1,
             "room": "",
+            "topic": -1,
             "tokens": sentenceTokens,
             "tokenWeight": sentenceTokenWeights
         };
         store.collection("sessions").doc("u88U5n4VEnsJmurTdpFG").update(obj);
         return SIDvalue;
-    } catch (e) { console.error("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
+        console.log(obj);
+    } catch (e) { console.log("Couldn't deposit initial values into Firebase " + SIDvalue + " || " + e); }
 }
 
 async function newUser(promptResponse, SIDvalue){
     resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs)).then(sid => joinQueue(sid));
 }
+
 
 export default newUser;
