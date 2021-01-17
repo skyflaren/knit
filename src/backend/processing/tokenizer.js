@@ -17,9 +17,13 @@ async function tokenize(promptResponse, res){
         	ret.push(res.entities[CHECK[toCheck]][subject].body);
         }
     }
-	console.log(ret);
-	document.getElementById("initial").innerHTML = promptResponse;
-	document.getElementById("display").innerHTML = ret;
+
+    try {
+    	document.getElementById("initial").innerHTML = promptResponse;
+    	document.getElementById("display").innerHTML = ret;
+    	console.log(ret);
+    } catch (e) {}
+    
     //lemmatize?
 }
 
@@ -28,10 +32,8 @@ async function newUser(promptResponse, SIDvalue){
     let tokens = tokenize("science and technology");
 }
 
-function main() {
-	const phrase = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
-	let res = resp(phrase);
-	res.then(rs => tokenize(phrase, rs));
+function test() {
+    const phrase = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
+    let res = resp(phrase);
+    res.then(rs => tokenize(phrase, rs));
 }
-
-main();
