@@ -1,5 +1,7 @@
 import React from "react";
-// import roomCode as getRoomCode from "../../backend/utils/usercode.js";
+import {getUserRoomCode as getRoomCode} from "../../backend/helpers/roomCode.js";
+import {getSID} from "../../backend/helpers/utils.js";
+
 import "./Lobby.css";
 
 class Lobby extends React.Component {
@@ -11,16 +13,14 @@ class Lobby extends React.Component {
   // }
 
   componentDidMount() {
-    // const code = 123;
-    // roomCode().then(code => {
-      // if (code !== undefined) {
-        // location.pathname = `/matched/?room=${code}`;
-      // }
-    // }
-
-    /*
-    Call function to check whether the room has been assigned
-    */
+    try {
+      const code = getRoomCode(getSID());
+      if (code !== undefined) {
+        location.pathname = `/matched/?room=${code}`;
+      }
+    } catch (e) {
+      // nothing
+    }
 
     // Auto reload
     setTimeout(() => {

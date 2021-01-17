@@ -1,18 +1,20 @@
-async function userRoomCode(userID){
+import {store} from "../../firebase.js";
+
+function userRoomCode(userID) {
     try {
-        let ret;
+        let code = undefined;
         store.collection("sessions").get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                user = doc.data()[userID];
-                ret = (user.room != "" ? user.room : undefined);
-                console.log("Room code: " + user.room);
+                let user = doc.data()[userID];
+                code = (user !== undefined && user.room !== "" ? user.room : undefined);
+                // console.log("Room code: " + user.room);
             });
             return;
         });
-        return ret;
+        return code;
     }
-    catch (e) { console.log("Couldn't give userRoomCode " + e); }
-    return undefined
+    catch (e) { console.error("Couldn't give user's room code " + e); }
+    return undefined;
 }
 
-// export const userRoomCode = userRoomCode
+export const getUserRoomCode = userRoomCode;
