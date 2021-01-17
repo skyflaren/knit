@@ -1,11 +1,10 @@
 <html>
 <head>
-    <title> OpenTok Getting Started </title>
+    <title>Video Call!</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
 </head>
 <body>
-
     <div id="videos">
         <div id="subscriber">
             subscriber
@@ -15,6 +14,13 @@
         </div>
     </div>
 
+    <p id="err"></p>
+
     <script type="text/javascript" src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", evt => {
+            createCall();
+        });
+    </script>
 </body>
 </html>

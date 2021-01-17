@@ -18,12 +18,12 @@ if (!firebase.apps.length) {
 export const app = firebase.app();
 
 // realtime database
-export const db = firebase.database();
+export const db = firebase.app().database();
 
 // firestore
-// export const store = firebase.firestore();
+// export const store = firebase.app().firestore();
 
 // authentication
-// export const auth = firebase.auth();
+// export const auth = firebase.app().auth();
 
 export default firebase;
