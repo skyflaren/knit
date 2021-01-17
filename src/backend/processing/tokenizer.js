@@ -52,46 +52,4 @@ async function newUser(promptResponse, SIDvalue){
     resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
 }
 
-async function userRoomCode(userID){
-    try {
-        let ret;
-        store.collection("sessions").get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                user = doc.data()[userID];
-                ret = (user.room != "" ? user.room : undefined);
-                console.log(user);
-                console.log("room code pog:: " + user.room);
-            });
-            return;
-        });
-        return ret;
-    }
-    catch (e) { console.log("Couldn't give userRoomCode " + e); }
-    return undefined
-}
-
-// newUser("Religion and world issues", 1);
-// newUser("My religion", 2);
-// joinQueue(1);
-// joinQueue(2);
-
-setTimeout(() => {
-    newUser("Religion and world issues", 1);
-}, 1000);
-setTimeout(() => {
-    newUser("My religion", 2);
-}, 1000);
-
-setTimeout(() => {
-   joinQueue(1);
-}, 3000);
-setTimeout(() => {
-    joinQueue(2);
-}, 3000);
-
-
-setTimeout(() => {
-    console.log("code pog " + userRoomCode(1));
-}, 10000);
-
 // export default newUser;
