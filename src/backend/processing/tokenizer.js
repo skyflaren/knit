@@ -11,9 +11,7 @@ async function resp(promptResponse) {
 
 async function tokenize(promptResponse, res){
     let ret = [];
-
-    // console.log(res);
-
+    
     for(let toCheck in CHECK){
         for(let subject in res.entities[CHECK[toCheck]]){
         	ret.push(res.entities[CHECK[toCheck]][subject].body);
@@ -31,8 +29,7 @@ async function newUser(promptResponse, SIDvalue){
 }
 
 function main() {
-	const phrase1 = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
-	const phrase = "The red cat.";
+	const phrase = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
 	let res = resp(phrase);
 	res.then(rs => tokenize(phrase, rs));
 }
