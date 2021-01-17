@@ -7,7 +7,7 @@ function requestParams(href) {
 		if (index > 0) {
 			href.substring(index+1).split("&").forEach(pair => {
 				pair = pair.split("=");
-				params[pair[0]] = pair[1];
+				params[pair[0]] = pair.length == 1 ? undefined : pair[1];
 			});
 		}
 
