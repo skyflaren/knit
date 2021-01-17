@@ -34,7 +34,7 @@ async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
     let sentenceTokenWeights = [];
     for(let i = 0; i < sentenceTokens.length; i++) sentenceTokenWeights.push(1);
     
-    db.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update({
+    store.collection("sessions").doc("SpQhTjlC7HTAJEbjPrXN").update({
         SIDvalue: {
             "rawResponse": promptResponse,
             "state": 1,

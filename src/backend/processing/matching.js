@@ -5,8 +5,8 @@ async function joinQueue(user){
     let q = {};
 
     for(let token in user.tokens){  //When adding user
-        if(q.hasOwnProperty(token)]{
-            db.collection("sessions").get().then((querySnapshot) => {
+        if(q.hasOwnProperty(token)){
+            store.collection("sessions").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     let user2 = doc.data().sid.q[token];
                 });
@@ -26,4 +26,4 @@ async function joinQueue(user){
     }
 }
 
-export const joinQueue = joinQueue;
+// export const joinQueue = joinQueue;
