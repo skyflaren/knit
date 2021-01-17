@@ -1,4 +1,5 @@
 var CHECK = ["noun:noun", "verb:verb", "verb-part:verb-part", "wit$contact:contact", "wit$creative_work:creative_work"];
+// const phrase = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
 
 async function resp(promptResponse) {
 
@@ -23,17 +24,27 @@ async function tokenize(promptResponse, res){
     	document.getElementById("display").innerHTML = ret;
     	console.log(ret);
     } catch (e) {}
-    
+
     //lemmatize?
+
+    return ret;
+}
+
+async function fillEntry(promptResponse, SIDvalue, sentenceTokens){
+    let sentenceTokenWeights = [];
+    for(let i = 0; i < sentenceTokens.length; i++) sentenceTokenWeights.push(1);
+    let user = {
+        SID: SIDvalue,
+        rawResponse: promptResponse,
+        tokens: sentenceTokens,
+        tokenWeight: sentenceTokenWeights
+    }
+
+    console.log(user);
+
+    return user;
 }
 
 async function newUser(promptResponse, SIDvalue){
-    //add into database
-    let tokens = tokenize("science and technology");
-}
-
-function test() {
-    const phrase = "The Last Jedi is a widely controversial movie, released by Disney as the second in the trilogy, directed by Rian Johnson";
-    let res = resp(phrase);
-    res.then(rs => tokenize(phrase, rs));
+    resp(promptResponse).then(rs => tokenize(promptResponse, rs)).then(rs => fillEntry(promptResponse, SIDvalue, rs));
 }
