@@ -1,29 +1,16 @@
-// (optional) add server code here
-var SERVER_BASE_URL = "https://tester-127.herokuapp.com";
-fetch(SERVER_BASE_URL + "/session")
-  .then(function (res) {
-    return res.json();
-  })
-  .then(function (res) {
-    apiKey = res.apiKey;
-    sessionId = res.sessionId;
-    token = res.token;
-    initializeSession();
-  })
-  .catch(handleError);
-// 
-// Handling all of our errors here by alerting them
-function handleError(error) {
-  if (error) {
-    alert(error.message);
-  }
+const SERVER_BASE_URL = "https://tester-127.herokuapp.com";
+
+function getSessionData(room) {
+  return fetch(`${SERVER_BASE_URL}/room/${room}`)
+    .then(res => res.json())
+    .catch(handleError);
 }
 
-function initializeSession() {
-  var session = OT.initSession(apiKey, sessionId);
+function initializeSession(data) {
+  const session = OT.initSession(data.apiKey, data.sessionId);
 
   // Subscribe to a newly created stream
-  session.on("streamCreated", function (event) {
+  session.on("streamCreated", (event) => {
     session.subscribe(
       event.stream,
       "subscriber",
@@ -35,8 +22,9 @@ function initializeSession() {
       handleError
     );
   });
+
   // Create a publisher
-  var publisher = OT.initPublisher(
+  const publisher = OT.initPublisher(
     "publisher",
     {
       insertMode: "append",
@@ -47,12 +35,66 @@ function initializeSession() {
   );
 
   // Connect to the session
-  session.connect(token, function (error) {
+  session.connect(data.token, e => {
     // If the connection is successful, publish to the session
-    if (error) {
-      handleError(error);
+    if (e) {
+      handleError(e, true);
     } else {
       session.publish(publisher, handleError);
     }
   });
 }
+
+function createCall() {
+  getSessionData(getParam("room","Invalid video session")).then(resp => initializeSession(resp)).catch(e => handleError(e,true));
+}
+
+// Error handling
+function handleError(error,display=false) {
+  if (error) {
+    if (display) {
+      // display error on the page
+      document.getElementById("err").textContent = error.message;
+      document.getElementById("err").style.display = "block";
+    } else {
+      console.log(error.message);
+    }
+  }
+}
+
+function getParam(key, msg="") {
+  const href = location.href;
+
+  const index = href.indexOf("?");
+  const params = {};
+  if (index > 0) {
+    const params = 
+    href.substring(index+1).split("&");
+    for (let pair of params) {
+      pair = pair.split("=");
+      if (pair[0] === key && pair.length > 1) {
+        return pair[1];
+      }
+    }
+  }
+  throw new Error(msg);
+}
+
+// function requestParams(href, key) {
+//   try {
+//     if (href === undefined) href = location.href;
+
+//     const index = href.indexOf("?");
+//     const params = {};
+//     if (index > 0) {
+//       href.substring(index+1).split("&").forEach(pair => {
+//         pair = pair.split("=");
+//         params[pair[0]] = pair.length == 1 ? undefined : pair[1];
+//       });
+//     }
+
+//     return params;
+//   } catch (e) {
+//     return {};
+//   }
+// }
