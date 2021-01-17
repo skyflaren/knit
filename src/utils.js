@@ -1,20 +1,30 @@
-function requestParams(href) {
+function requestParams() {
 	try {
-		if (href === undefined) href = location.href;
+		const href = location.search.substring(1);
 
-		const index = href.indexOf("?");
 		const params = {};
-		if (index > 0) {
-			href.substring(index+1).split("&").forEach(pair => {
-				pair = pair.split("=");
-				params[pair[0]] = pair.length == 1 ? undefined : pair[1];
-			});
-		}
+		href.split("&").forEach(pair => {
+			pair = pair.split("=");
+			params[pair[0]] = pair.length == 1 ? undefined : pair[1];
+		});
 
 		return params;
 	} catch (e) {
 		return {};
 	}
+}
+
+function getParam(key, msg="") {
+  const href = location.search.substring(1);
+
+  const params = href.split("&");
+  for (let pair of params) {
+    pair = pair.split("=");
+    if (pair[0] === key && pair.length > 1) {
+      return pair[1];
+    }
+  }
+  throw new Error(msg);
 }
 
 function genConcatNumbers() {
@@ -41,6 +51,7 @@ function genUserSID() {
 
 export const generateSessionName = genConcatNumbers;
 export const getRequestParams = requestParams;
+export const getRequestParam = getParam;
 export const getSID = getUserSID;
 export const setSID = setUserSID;
-export const genSID = genSID;
+export const genSID = genUserSID;

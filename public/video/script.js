@@ -63,38 +63,14 @@ function handleError(error,display=false) {
 }
 
 function getParam(key, msg="") {
-  const href = location.href;
+  const href = location.search.substring(1);
 
-  const index = href.indexOf("?");
-  const params = {};
-  if (index > 0) {
-    const params = 
-    href.substring(index+1).split("&");
-    for (let pair of params) {
-      pair = pair.split("=");
-      if (pair[0] === key && pair.length > 1) {
-        return pair[1];
-      }
+  const params = href.split("&");
+  for (let pair of params) {
+    pair = pair.split("=");
+    if (pair[0] === key && pair.length > 1) {
+      return pair[1];
     }
   }
   throw new Error(msg);
 }
-
-// function requestParams(href, key) {
-//   try {
-//     if (href === undefined) href = location.href;
-
-//     const index = href.indexOf("?");
-//     const params = {};
-//     if (index > 0) {
-//       href.substring(index+1).split("&").forEach(pair => {
-//         pair = pair.split("=");
-//         params[pair[0]] = pair.length == 1 ? undefined : pair[1];
-//       });
-//     }
-
-//     return params;
-//   } catch (e) {
-//     return {};
-//   }
-// }
