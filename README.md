@@ -1,5 +1,5 @@
 # knit
-Smart peer-based app for goals and objectives
+A social app, pairing people in one-on-one calls based on interests
 
 This project is also deployed remotely at https://commit-d.web.app/. 
 
